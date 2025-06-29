@@ -1,183 +1,111 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Para Sujeysita ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Sujeysita 💜</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to top, #1a1a1a, #3a1c32);
-      height: 100vh;
-      font-family: 'Georgia', serif;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .spotlight {
-      width: 200px;
-      height: 300px;
-      border-radius: 50% 50% 0 0;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.15), transparent 80%);
-      animation: pulseLight 2s infinite alternate;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .silhouette {
-      width: 120px;
-      height: 120px;
-      background-image: url("https://i.imgur.com/Mc9T4yU.png");
-      background-size: cover;
-      background-position: center;
-      filter: drop-shadow(0 0 10px #ff96c5);
-      opacity: 0.9;
-    }
-
-    @keyframes pulseLight {
-      0% { opacity: 0.2; transform: scale(1); }
-      100% { opacity: 0.4; transform: scale(1.05); }
-    }
-
-    .poem {
-      max-width: 80%;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to top right, #e8d5f7, #fce4ff);
+      overflow-x: hidden;
+      color: #5e4b8b;
       text-align: center;
-      font-size: 20px;
-      color: #ffd6e8;
-      margin-bottom: 30px;
-      opacity: 0;
-      animation: fadeInPoem 3s ease forwards;
-      animation-delay: 1s;
     }
-
-    @keyframes fadeInPoem {
-      to { opacity: 1; transform: scale(1.02); }
-    }
-
-    .button-container {
-      margin: 20px;
-      display: flex;
-      gap: 20px;
-    }
-
-    button {
-      padding: 10px 25px;
-      font-size: 18px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    .enabled {
-      background-color: #ff4081;
-      color: white;
-      box-shadow: 0 0 10px #ff9dbb;
-    }
-
-    .disabled {
-      background-color: #555;
-      color: #aaa;
-      cursor: not-allowed;
-    }
-
-    .heart {
+    .titulo {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
       margin-top: 40px;
-      width: 120px;
-      height: 110px;
-      background: red;
-      position: relative;
-      transform: rotate(-45deg);
-      animation: heartbeat 1s infinite;
-      opacity: 0;
-      animation-delay: 0.3s;
-      animation-fill-mode: forwards;
+      animation: aparecer 2s ease-in-out forwards;
     }
-
-    .heart::before,
-    .heart::after {
-      content: "";
-      width: 120px;
-      height: 110px;
-      background: red;
-      border-radius: 50%;
-      position: absolute;
+    .mensaje {
+      font-size: 1.5rem;
+      margin: 20px;
+      animation: escribir 5s steps(40, end);
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #5e4b8b;
+      width: 0;
+      margin: auto;
     }
-
-    .heart::before {
-      top: -60px;
-      left: 0;
+    @keyframes escribir {
+      from { width: 0 }
+      to { width: 90%; }
     }
-
-    .heart::after {
-      left: 60px;
+    @keyframes aparecer {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .foto {
+      margin-top: 30px;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      animation: aparecer 3s ease-in-out forwards;
+    }
+    .firma {
+      margin-top: 40px;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+    .corazones {
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
     }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1) rotate(-45deg); }
-      50% { transform: scale(1.2) rotate(-45deg); }
+    .corazon {
+      position: absolute;
+      color: #ffc1f3;
+      font-size: 2rem;
+      animation: flotar 8s infinite ease-in;
     }
-
-    .love-text {
-      margin-top: 20px;
-      font-size: 26px;
-      color: #ffaad4;
-      opacity: 0;
-      animation: fadeIn 2s forwards;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    @keyframes flotar {
+      from {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="corazones" id="corazones"></div>
+  <h1 class="titulo">Para ti, Sujeysita 💜</h1>
+  <div class="mensaje">Eres el amor de mi Vida mi Sujey Yamile Kiara Huarcaya Meza Hermosa</div>
+  <img src="foto.jpg" alt="Nosotros tomados de la mano" class="foto" />
+  <div class="firma">Con todo mi amor, Emerson 💌</div>
 
+  <!-- Música de fondo -->
   <audio autoplay loop>
-    <source src="music.mp3" type="audio/mp3">
+    <source src="https://www.dropbox.com/scl/fi/j9xy8gfgjrfqdyjwrd87a/MAI-MiloJ-Instrumental.mp3?rlkey=2lwsfwl7qotd9gg2ugco6xbh3&raw=1" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
   </audio>
 
-  <audio id="voiceAudio" src="voice.mp3" preload="auto"></audio>
-
-  <div class="spotlight">
-    <div class="silhouette"></div>
-  </div>
-
-  <div class="poem">
-    En medio de luces suaves y sueños rosados,<br>
-    hay un nombre que late más fuerte que el alma:<br>
-    <b>Sujeysita</b>, mi ternura, mi calma,<br>
-    la razón por la cual todo cobra sentido y encanto. 💫
-  </div>
-
-  <div class="button-container">
-    <button class="enabled" onclick="loveAction()">Bien</button>
-    <button class="disabled" disabled>Mal</button>
-  </div>
-
-  <div id="heartContainer" style="display:none; flex-direction: column; align-items: center;">
-    <div class="heart"></div>
-    <div class="love-text">Te amo mi Sujeysita hermosa 💖</div>
-  </div>
-
   <script>
-    function loveAction() {
-      document.getElementById('heartContainer').style.display = 'flex';
-      document.getElementById('voiceAudio').play();
+    const corazones = document.getElementById("corazones");
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.fontSize = Math.random() * 20 + 10 + "px";
+      corazon.textContent = "💜";
+      corazones.appendChild(corazon);
+      setTimeout(() => {
+        corazon.remove();
+      }, 8000);
     }
+    setInterval(crearCorazon, 300);
   </script>
-
 </body>
 </html>
